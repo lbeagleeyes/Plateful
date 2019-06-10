@@ -1,3 +1,7 @@
+body {
+  color: darkslategrey;
+}
+
 /* Top Banner */
 #banner {
   position: relative;
@@ -72,3 +76,31 @@ h5 {
   top: 10px;
   right: 4px;
 }
+
+
+/* Recipe results */
+#recipes {
+  margin-top: 30px;
+  padding-left: 100px;
+}
+
+
+/* 3 Day Calendar */
+#calendar {
+  margin-top: 30px;
+  padding-left: 80px;
+  padding-bottom: 50px;
+}
+
+
+/* Footer */
+#footer {
+  border-top: 6px solid lightgrey;
+  color: white;
+  text-align: center;
+}
+
+
+
+
+   
