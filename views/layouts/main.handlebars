@@ -2,14 +2,56 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
-  <title>Home Page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <!-- styles.css -->
+  <link rel="stylesheet" href="/public/styles/styles.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+
+  <title>Plateful</title>
 </head>
 
 <body>
+
+  <!-- Header banner with logo -->
+  <div class="row cyan darken-2" style="margin: 0px; text-align: center;">
+    <div class="col s12" id="banner">
+      <h1><img src="icon.png" alt="Plate with fork and knife icon" class="icon">Plateful</h1>
+      <h5>What's in your fridge?</h5>
+    </div>
+  </div>
+  <br>
+  <br>
+
+  <!-- Search bar -->
+  <form id="search">
+    <div class="row">
+      <div class="input-field inline col s12">
+        <input id="ingredients" type="text" class="validate">
+        <label for="ingredients" id="text">Enter the ingredients in your fridge (separated by commas), and we'll provide
+          you with tailored recipes!</label>
+        <span class="helper-text" data-error="wrong" data-success="right">chicken, eggs, rice, etc.</span>
+        <button class="btn waves-effect cyan darken-2" id="submit-button" type="submit" name="action">Submit</button>
+      </div>
+  </form>
+
+
   {{{body}}}
+
+
+  <!-- jQuery -->
+  <script src="jquery-3.4.0.min.js"></script>
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
 </body>
 
 </html>
