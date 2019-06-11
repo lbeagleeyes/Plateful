@@ -9,11 +9,14 @@
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-  <!-- styles.css -->
-  <link rel="stylesheet" href="/public/styles/styles.css">
+  <!-- Materialize icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+
+  <!-- styles.css -->
+  <link rel="stylesheet" href="/styles/styles.css">
 
   <title>Plateful</title>
 </head>
@@ -23,7 +26,7 @@
   <!-- Header banner with logo -->
   <div class="row cyan darken-2" style="margin: 0px; text-align: center;">
     <div class="col s12" id="banner">
-      <h1><img src="icon.png" alt="Plate with fork and knife icon" class="icon">Plateful</h1>
+      <h1><img src="/images/icon.png" alt="Plate with fork and knife icon" class="icon">Plateful</h1>
       <h5>What's in your fridge?</h5>
     </div>
   </div>
@@ -38,13 +41,20 @@
         <label for="ingredients" id="text">Enter the ingredients in your fridge (separated by commas), and we'll provide
           you with tailored recipes!</label>
         <span class="helper-text" data-error="wrong" data-success="right">chicken, eggs, rice, etc.</span>
-        <button class="btn waves-effect cyan darken-2" id="submit-button" type="submit" name="action">Submit</button>
+        <button class="btn waves-effect cyan darken-2" id="submit-button" type="submit" name="action">SEARCH</button>
       </div>
   </form>
 
 
   {{{body}}}
 
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-copyright cyan darken-2" id="footer" style="position:fixed; bottom:0; left:0; width:100%;"> <!-- Style here fixes footer to bottom -->
+      <p>© 2019 Plateful</p>
+    </div>
+  </footer>
 
   <!-- jQuery -->
   <script src="jquery-3.4.0.min.js"></script>
