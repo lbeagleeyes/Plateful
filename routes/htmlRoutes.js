@@ -1,6 +1,7 @@
 var db = require("../models");
 require("dotenv").config();
 var axios = require("axios");
+var authController = require("../controllers/authcontroller");
 
 module.exports = function(app) {
   // Load index page
