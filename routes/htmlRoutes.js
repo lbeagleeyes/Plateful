@@ -1,4 +1,6 @@
 var db = require("../models");
+require("dotenv").config();
+var axios = require("axios");
 
 module.exports = function(app) {
   // Load index page
@@ -17,6 +19,29 @@ module.exports = function(app) {
       res.render("example", {
         example: dbExample
       });
+    });
+  });
+
+  app.get('/recipes/:ingr', function(req, res){
+    var queryURL = `https://www.food2fork.com/api/search?key=${process.env.API_KEY}&q=${req.params.ingr}`;
+
+    console.log("received requests. Params: " + req.params.ingr);
+    console.log("Query = " + queryURL);
+
+    axios.get(queryURL).then( function (response) {
+        console.log(response.data.recipes);
+        res.json(response.data.recipes);
+    });
+  });
+
+  app.get('/recipe/:id', function(req, res){
+    var queryURL = `https://www.food2fork.com/api/get?key=${process.env.API_KEY}&rId=${req.params.id}`;
+
+    console.log("Query = " + queryURL);
+
+    axios.get(queryURL).then( function (response) {
+        console.log(response.data.recipe);
+        res.json(response.data.recipe);
     });
   });
 
