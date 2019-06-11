@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": null,
-    "database": "exampledb",
+    "password": "DB_PSSWD",
+    "database": "platefuldb",
     "host": "localhost",
     "dialect": "mysql"
   },
