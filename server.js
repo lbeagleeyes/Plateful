@@ -1,6 +1,7 @@
 require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
+var path = require("path");
 
 // var env = require('dotenv').load();
 
@@ -16,7 +17,7 @@ var bodyParser = require('body-parser');
 // Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 
 //For BodyParser
 app.use(bodyParser.urlencoded({ extended: true }));

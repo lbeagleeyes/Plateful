@@ -78,12 +78,22 @@ h5 {
 }
 
 
-/* Recipe results */
+/* Recipe cards */
 #recipes {
   margin-top: 30px;
   padding-left: 100px;
 }
 
+.card-title {
+  position: relative;
+  top: 120px;
+  right: 60px;
+  color: darkslategrey;
+}
+
+.card-content {
+  color: darkslategrey;
+}
 
 /* 3 Day Calendar */
 #calendar {
