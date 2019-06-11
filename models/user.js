@@ -28,8 +28,8 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.DATE
     },
     status: {
-      type: DataTypes.ENUM('active', 'inactive'),
-      defaultValue: 'active'
+      type: DataTypes.ENUM("active", "inactive"),
+      defaultValue: "active"
     }
   });
 

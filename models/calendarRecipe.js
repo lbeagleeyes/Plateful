@@ -2,12 +2,12 @@ module.exports = function(sequelize, DataTypes) {
   var CalendarRecipe = sequelize.define("CalendarRecipe", {
     recipeName: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
-    recipeId: { 
+    recipeId: {
       type: DataTypes.INTEGER,
       allowNull: false
-    }, 
+    },
     date: DataTypes.DATE,
     mealtime: DataTypes.STRING,
     UserId: {
