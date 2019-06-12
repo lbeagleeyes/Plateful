@@ -1,19 +1,37 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Get all examples
+  // Get all examples from the DB
   app.get("/recipes", function(req, res) {
     db.findAll({}).then(function(results) {
       res.json(results);
     });
   });
 
+  app.get("/dates", function(req, res) {
+    db.CalendarRecipe.findAll({
+      where: {
+        date: {
+          $between: [req.params.startDate, req.params.endDate]
+        }
+      }
+    }).then(function(results) {
+      res.json(results);
+    });
+  });
   // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
+  app.post("/api", function(req, res) {
+    db.CalendarRecipe.create(req.body).then(function(dbExample) {
       res.json(dbExample);
     });
   });
+
+  app.post("/newuser", function(req, res) {
+    db.User.create(req.body).then(function(dbExample) {
+      res.json(dbExample);
+    });
+  });
+
 
   // Delete an example by id
   app.delete("/api/examples/:id", function(req, res) {
