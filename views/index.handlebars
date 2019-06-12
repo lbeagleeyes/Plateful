@@ -1,14 +1,27 @@
+<!-- Search bar -->
+<form id="search">
+  <div class="row">
+    <div class="input-field inline col s12">
+      <input id="ingredients" type="text" class="validate">
+      <label for="ingredients" id="text">Enter the ingredients in your fridge (separated by commas), and we'll provide
+        you with tailored recipes!</label>
+      <span class="helper-text" data-error="wrong" data-success="right">chicken, eggs, rice, etc.</span>
+      <button class="btn waves-effect cyan darken-2" id="submit-button" type="submit" name="action">SEARCH</button>
+    </div>
+</form>
+
 <!-- Recipe results and calendar -->
 <!-- Recipe results-->
 <div class="row">
-  <div class="col s6" id="recipes">
+  <div class="col s6 push-s1" id="recipes">
+    <!-- Push moves column to the right -->
     <h6>Recipe Results</h6>
     <hr><br>
     <div class="card small">
       <div class="card-image">
         <img src="/images/placeholder.jpg">
-        <span class="card-title"><strong>Recipe Name</strong</span> </div> <div class="card-content">
-            <p>Short recipe description goes here</p>
+        <span class="card-title"><strong>Recipe Name</strong></span> </div> <div class="card-content">
+            <p class="description">Short recipe description goes here</p>
       </div>
       <div class="card-action">
         <a href="#">This is a link</a>
@@ -17,7 +30,8 @@
   </div>
 
   <!-- Calendar-->
-  <div class="col s6" id="calendar">
+  <div class="col s6 push-s3" id="calendar">
+    <!-- Push moves column to the right -->
     <h6>3 Day Calendar</h6>
     <hr><br>
     <table>
@@ -52,8 +66,8 @@
       </tbody>
     </table>
   </div>
-</div>
-<!--row-->
+</div> <!--row-->
+
 
 
 <!-- Javascript links -->
