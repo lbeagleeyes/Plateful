@@ -1,19 +1,17 @@
 module.exports = function(sequelize, DataTypes) {
   var CalendarRecipe = sequelize.define("CalendarRecipe", {
-    recipeName: {
+    title: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
-    recipeId: { 
+    apiId: {
       type: DataTypes.INTEGER,
       allowNull: false
-    }, 
-    date: DataTypes.DATE,
-    mealtime: DataTypes.STRING,
-    UserId: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    }
+    },
+    date: {
+      type: DataTypes.DATE
+    },
+    mealtime: DataTypes.STRING
   });
 
   CalendarRecipe.associate = function(models) {
