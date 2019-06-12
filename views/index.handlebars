@@ -2,9 +2,8 @@
 <form id="search">
   <div class="row">
     <div class="input-field inline col s12">
-      <input id="ingredients" type="text" class="validate">
-      <label for="ingredients" id="text">Enter the ingredients in your fridge (separated by commas), and we'll provide
-        you with tailored recipes!</label>
+      <input type="text" id="ingredients" class="autocomplete">
+      <label for="ingredients" id="text">Enter the ingredients in your fridge (separated by commas), and we'll provide you with tailored recipes!</label>
       <span class="helper-text" data-error="wrong" data-success="right">chicken, eggs, rice, etc.</span>
       <button class="btn waves-effect cyan darken-2" id="submit-button" type="submit" name="action">SEARCH</button>
     </div>
@@ -20,8 +19,9 @@
     <div class="card small">
       <div class="card-image">
         <img src="/images/placeholder.jpg">
-        <span class="card-title"><strong>Recipe Name</strong></span> </div> <div class="card-content">
-            <p class="description">Short recipe description goes here</p>
+        <span class="card-title"><strong>Recipe Name</strong></span> </div>
+      <div class="card-content">
+        <p class="description">Short recipe description goes here</p>
       </div>
       <div class="card-action">
         <a href="#">This is a link</a>
@@ -66,13 +66,15 @@
       </tbody>
     </table>
   </div>
-</div> <!--row-->
+</div>
+<!--row-->
 
 
 
 <!-- Javascript links -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
+<script src="/js/ingredients.js"></script>
+
 
 
 
