@@ -5,7 +5,10 @@
       <input type="text" id="ingredients" class="autocomplete">
       <label for="ingredients" id="text">Enter the ingredients in your fridge (separated by commas), and we'll provide you with tailored recipes!</label>
       <span class="helper-text" data-error="wrong" data-success="right">chicken, eggs, rice, etc.</span>
-      <button class="btn waves-effect cyan darken-2" id="submit-button" type="submit" name="action">SEARCH</button>
+      <div class="container" id="buttons-view">
+        <!-- Ingredient buttons go here -->
+      </div>
+      <button class="btn waves-effect cyan darken-2" id="search-button" type="submit" name="action" onclick="search()"><i class="material-icons">search</i>SEARCH</button>
     </div>
 </form>
 
