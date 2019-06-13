@@ -15,21 +15,20 @@
 <!-- Recipe results and calendar -->
 <!-- Recipe results-->
 <div class="row">
-  <div class="col s6 push-s1" id="recipes">
+  <div class="col s6 push-s1">
     <!-- Push moves column to the right -->
     <h6>Recipe Results</h6>
     <hr><br>
-    <div class="card small">
-      <div class="card-image">
-        <img src="/images/placeholder.jpg">
-        <span class="card-title"><strong>Recipe Name</strong></span> </div>
-      <div class="card-content">
-        <p class="description">Short recipe description goes here</p>
-      </div>
-      <div class="card-action">
-        <a href="#">This is a link</a>
-      </div>
-    </div>
+
+  <!-- Recipe results and calendar -->
+  <!-- Recipe results-->
+  <div class="container">
+    <ul class="collection" id="recipes">
+    {{#each recipes}}
+    {{>recipes/recipe-block}}
+    {{/each}}
+
+    </ul>
   </div>
 
   <!-- Calendar-->
