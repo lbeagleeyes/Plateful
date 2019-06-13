@@ -51,5 +51,13 @@ function addIngredientBtn(ingredientName) {
 }
 
 function search() {
-  alert(ingredientsList);
+  //call api with ingredientsList
+  $.ajax({
+    type: "GET",
+    url: "/recipes/",
+    data: ingredientsList,
+    success: function(response) {
+      console.log("Recipes loaded");
+    }
+  });
 }
