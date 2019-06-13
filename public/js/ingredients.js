@@ -54,10 +54,11 @@ function search() {
   //call api with ingredientsList
   $.ajax({
     type: "GET",
-    url: "/recipes/",
-    data: ingredientsList,
+    url: "/recipes/" + ingredientsList,
     success: function(response) {
-      console.log("Recipes loaded");
+      console.log("Recipes loaded: " + response);
+      // var list_partial = Handlebars.partials.index;
+      // $view.find("#recipes").html(list_partial(response));
     }
   });
 }

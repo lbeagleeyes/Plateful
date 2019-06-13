@@ -33,9 +33,8 @@ module.exports = function (app) {
       var hbsObject = {
         recipes: response.data.recipes
       };
-      console.log(hbsObject);
+      //console.log(hbsObject);
       res.render("index", hbsObject);
-      console.log(response.data.recipes);
     });
   });
 

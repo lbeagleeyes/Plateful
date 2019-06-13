@@ -2,11 +2,11 @@ var db = require("../models");
 
 module.exports = function(app) {
   // Get all recipes
-  app.get("/recipes", function(req, res) {
-    db.findAll({}).then(function(results) {
-      res.json(results);
-    });
-  });
+  // app.get("/recipes", function(req, res) {
+  //   db.findAll({}).then(function(results) {
+  //     res.json(results);
+  //   });
+  // });
 
   app.get("/ingredients", function(req, res) {
     db.Ingredient.findAll({}).then(function(results) {
