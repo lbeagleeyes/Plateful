@@ -31,6 +31,7 @@ module.exports = function (app) {
 
     axios.get(queryURL).then(function (response) {
       var recipes = response.data.recipes;
+      console.log(recipes);
       res.send(recipes);
     });
   });

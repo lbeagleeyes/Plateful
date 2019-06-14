@@ -51,20 +51,96 @@ function addIngredientBtn(ingredientName) {
 }
 
 function search() {
-  //call api with ingredientsList
   event.preventDefault();
+
+  //clear ingredients list and recipes display area
+  clearIngredientsList();
+
+  //call api with ingredientsList
   $.ajax({
     type: "GET",
     url: "/recipes/" + ingredientsList,
     success: function (response) {
-      console.log("Recipes loaded: ");
-      response.forEach(recipe => {
-        //call card creator here
-        console.log(recipe);
-      });
-      //reloading of partial:
-      // var list_partial = Handlebars.partials.index;
-      // $view.find("#recipes").html(list_partial(response));
+      console.log("Recipes loaded: " + response);
+      if (response.length > 0) {
+        response.forEach(recipe => {
+          //call card creator here
+          console.log(recipe);
+          // var card = createCard(recipe);
+          // $('#recipes').append(card);
+        });
+      } else {
+        var msg = $('<h3>').text("No recipes found.");
+        $('#recipes').append(msg);
+      }
     }
   });
+
+
+}
+
+function createCard(recipe) {
+  var card = new $('<div>', {
+    class: 'card recipeCard',
+    id: recipe.recipe_id
+  });
+
+  var cardImg = new $('<div>', {
+    class: 'card-image waves-effect waves-block waves-light'
+  });
+
+  var image = new $('<img>', {
+    class: 'activator',
+    src: recipe.image_url
+  });
+
+  cardImg.append(image);
+  card.append(cardImg);
+
+  var cardContent = $('<div>').class("card-content");
+  var title = new $('<span>', {
+    class: 'card-title activator grey-text text-darken-4',
+    text: recipe.title,
+  });
+
+  var moreIcon = new $('<i>', {
+    class: 'material-icons right',
+    text: 'more_vert'
+  });
+
+  title.addIngredientBtn(moreIcon);
+  cardContent.append(title);
+
+  var link = $('<p>');
+  var recipeURL = $("<a href>").attr("src", recipe.source_url);
+
+  link.append(recipeURL);
+  cardContent.append(link);
+  card.append(cardContent);
+
+  var reveal = $('<div>').class('card-reveal');
+  var revealTitle = new $('<span>', {
+    class: "card-title grey-text text-darken-4",
+    text: recipe.title
+  });
+
+  var closeIcon = new $('<i>', {
+    class: "material-icons right",
+    text: 'close'
+  });
+
+  var ingredients = $('<p>').text("Placeholder for ingredients detail");
+
+  revealTitle.append(closeIcon);
+  reveal.append(revealTitle);
+  reveal.append(ingredients);
+  card.append(reveal);
+
+  return card;
+}
+
+function clearIngredientsList() {
+  ingredientsList = [];
+  $("#buttons-view").empty();
+  $("#recipes").empty();
 }
