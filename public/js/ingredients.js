@@ -1,10 +1,10 @@
 var ingredientsList = [];
 
-$(document).ready(function() {
+$(document).ready(function () {
   $.ajax({
     type: "GET",
     url: "/ingredients",
-    success: function(response) {
+    success: function (response) {
       var ingredientArray = response;
       var dataIngredient = {};
       for (var i = 0; i < ingredientArray.length; i++) {
@@ -14,7 +14,7 @@ $(document).ready(function() {
       $("input.autocomplete").autocomplete({
         data: dataIngredient,
         limit: 5, // The max amount of results that can be shown at once. Default: Infinity.
-        onAutocomplete: function(value) {
+        onAutocomplete: function (value) {
           ingredientsList.push(value);
           addIngredientBtn(value);
           $("#ingredients").val("");
@@ -33,7 +33,7 @@ function addIngredientBtn(ingredientName) {
     "data-name": ingredientName,
     id: ingredientName,
     text: ingredientName,
-    click: function() {
+    click: function () {
       //var remove = confirm("Do you want to remove " + emotion + " button?");
       // if (remove) {
       $("#" + ingredientName).remove();
@@ -52,11 +52,17 @@ function addIngredientBtn(ingredientName) {
 
 function search() {
   //call api with ingredientsList
+  event.preventDefault();
   $.ajax({
     type: "GET",
     url: "/recipes/" + ingredientsList,
-    success: function(response) {
-      console.log("Recipes loaded: " + response);
+    success: function (response) {
+      console.log("Recipes loaded: ");
+      response.forEach(recipe => {
+        //call card creator here
+        console.log(recipe);
+      });
+      //reloading of partial:
       // var list_partial = Handlebars.partials.index;
       // $view.find("#recipes").html(list_partial(response));
     }
