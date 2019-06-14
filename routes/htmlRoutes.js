@@ -30,11 +30,8 @@ module.exports = function (app) {
     console.log("Query = " + queryURL);
 
     axios.get(queryURL).then(function (response) {
-      var hbsObject = {
-        recipes: response.data.recipes
-      };
-      //console.log(hbsObject);
-      res.render("index", hbsObject);
+      var recipes = response.data.recipes;
+      res.send(recipes);
     });
   });
 
@@ -48,6 +45,13 @@ module.exports = function (app) {
       res.json(response.data.recipe);
     });
   });
+
+  //use when loading calendar recipes
+  // var hbsObject = {
+  //   recipes: response.data.recipes
+  // };
+  // //console.log(hbsObject);
+  // res.render("index", hbsObject);
 
   // Render 404 page for any unmatched routes
   app.get("*", function (req, res) {
