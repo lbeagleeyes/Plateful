@@ -7,6 +7,12 @@ module.exports = function(app) {
       res.json(results);
     });
   });
+  // Get all recipes
+  // app.get("/recipes", function(req, res) {
+  //   db.findAll({}).then(function(results) {
+  //     res.json(results);
+  //   });
+  // });
 
   app.get("/dates", function(req, res) {
     db.CalendarRecipe.findAll({
