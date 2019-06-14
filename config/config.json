@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "yourRootPassword",
+    "password": "DB_PSSWD",
     "database": "platefuldb",
     "host": "localhost",
     "dialect": "mysql"
