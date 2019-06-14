@@ -11,12 +11,15 @@
   },
   "license": "ISC",
   "dependencies": {
+    "@fullcalendar/core": "^4.2.0",
+    "@fullcalendar/daygrid": "^4.2.0",
     "axios": "^0.19.0",
     "dotenv": "^8.0.0",
     "express": "^4.17.0",
     "express-handlebars": "^3.1.0",
     "fs": "0.0.1-security",
     "mysql2": "^1.6.5",
+    "nodemon": "^1.19.1",
     "path": "^0.12.7",
     "sequelize": "^5.8.7"
   },
@@ -29,5 +32,18 @@
     "eslint-plugin-prettier": "^3.1.0",
     "mocha": "^6.1.4",
     "prettier": "^1.17.1"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrwjrdn/Project2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/andrwjrdn/Project2/issues"
+  },
+  "homepage": "https://github.com/andrwjrdn/Project2#readme"
 }
