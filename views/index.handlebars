@@ -22,52 +22,15 @@
 
   <!-- Recipe results and calendar -->
   <!-- Recipe results-->
-  <div class="container">
-    <ul class="collection" id="recipes">
-    {{!-- {{#each recipes}}
-    {{>recipes/recipe-block}}
-    {{/each}} --}}
-
-    </ul>
+  <div class="container" id="recipes">
+    {{!-- <ul class="collection" >
+    </ul> --}}
   </div>
 
   <!-- Calendar-->
   <div class="col s6 push-s3" id="calendar">
     <!-- Push moves column to the right -->
-    <h6>3 Day Calendar</h6>
-    <hr><br>
-    <table>
-      <thead>
-        <tr>
-          <th></th>
-          <th>Day 1</th>
-          <th>Day 2</th>
-          <th>Day 3</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr>
-          <th>Breakfast&nbsp;</th>
-          <td>Recipe goes here</td>
-          <td>Recipe goes here</td>
-          <td>Recipe goes here</td>
-        </tr>
-        <tr>
-          <th>Lunch&nbsp;</th>
-          <td>Recipe goes here</td>
-          <td>Recipe goes here</td>
-          <td>Recipe goes here</td>
-        </tr>
-        <tr>
-          <th>Dinner&nbsp;</th>
-          <td>Recipe goes here</td>
-          <td>Recipe goes here</td>
-          <td>Recipe goes here</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    
 </div>
 <!--row-->
 
@@ -75,7 +38,14 @@
 
 <!-- Javascript links -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src='https://fullcalendar.io/releases/core/4.2.0/main.min.js'></script>
+    <script src='https://fullcalendar.io/releases/interaction/4.2.0/main.min.js'></script>
+     <script src='https://fullcalendar.io/releases/daygrid/4.2.0/main.min.js'></script>
+    <script src='https://fullcalendar.io/releases/timegrid/4.2.0/main.min.js'></script>
+
 <script src="/js/ingredients.js"></script>
+<script src="/js/calendar.js"></script>
 
 
 
