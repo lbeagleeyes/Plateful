@@ -59,6 +59,7 @@ function search() {
       console.log("Recipes loaded: " + response);
       // var list_partial = Handlebars.partials.index;
       // $view.find("#recipes").html(list_partial(response));
+      displayRecipes();
     }
   });
 }
