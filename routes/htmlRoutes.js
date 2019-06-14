@@ -12,7 +12,7 @@ module.exports = function (app) {
       // examples: dbExamples
     });
   });
-  // });
+
 
   // // Load example page and pass in an example by id
   // app.get("/example/:id", function(req, res) {

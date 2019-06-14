@@ -52,9 +52,7 @@ function addIngredientBtn(ingredientName) {
 
 function search() {
   event.preventDefault();
-
-  //clear ingredients list and recipes display area
-  clearIngredientsList();
+  $("#recipes").empty();
 
   //call api with ingredientsList
   $.ajax({
@@ -65,9 +63,9 @@ function search() {
       if (response.length > 0) {
         response.forEach(recipe => {
           //call card creator here
-          console.log(recipe);
-          // var card = createCard(recipe);
-          // $('#recipes').append(card);
+          //console.log(recipe);
+          var card = createCard(recipe);
+          $('#recipes').append(card);
         });
       } else {
         var msg = $('<h3>').text("No recipes found.");
@@ -76,7 +74,8 @@ function search() {
     }
   });
 
-
+  //clear ingredients list and recipes display area
+  clearIngredientsList();
 }
 
 function createCard(recipe) {
@@ -97,7 +96,9 @@ function createCard(recipe) {
   cardImg.append(image);
   card.append(cardImg);
 
-  var cardContent = $('<div>').class("card-content");
+  var cardContent = new $('<div>', {
+    class:"card-content"
+  });
   var title = new $('<span>', {
     class: 'card-title activator grey-text text-darken-4',
     text: recipe.title,
@@ -108,7 +109,7 @@ function createCard(recipe) {
     text: 'more_vert'
   });
 
-  title.addIngredientBtn(moreIcon);
+  title.append(moreIcon);
   cardContent.append(title);
 
   var link = $('<p>');
@@ -118,7 +119,7 @@ function createCard(recipe) {
   cardContent.append(link);
   card.append(cardContent);
 
-  var reveal = $('<div>').class('card-reveal');
+  var reveal = $('<div>').attr("class",'card-reveal');
   var revealTitle = new $('<span>', {
     class: "card-title grey-text text-darken-4",
     text: recipe.title
@@ -142,5 +143,4 @@ function createCard(recipe) {
 function clearIngredientsList() {
   ingredientsList = [];
   $("#buttons-view").empty();
-  $("#recipes").empty();
 }
