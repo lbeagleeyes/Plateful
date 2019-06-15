@@ -64,7 +64,9 @@ function search() {
         response.forEach(recipe => {
           //call card creator here
           //console.log(recipe);
+
           var card = createCard(recipe);
+         
           $('#recipes').append(card);
         });
       } else {
@@ -113,7 +115,11 @@ function createCard(recipe) {
   cardContent.append(title);
 
   var link = $('<p>');
-  var recipeURL = $("<a href>").attr("src", recipe.source_url);
+  var recipeURL = $("<a>", {
+    href:recipe.source_url,
+    text:recipe.publisher,
+    target: "_blank"
+  });
 
   link.append(recipeURL);
   cardContent.append(link);

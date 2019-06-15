@@ -17,7 +17,7 @@ $(document).ready(function () {
 
   var calendar = new FullCalendar.Calendar(calendarEl, {
     plugins: ["interaction", "dayGrid", "timeGrid"],
-    defaultView: "timeGrid",
+    defaultView: "dayGrid",
     dayCount: 3,
     defaultDate: "2019-06-07",
     header: {
