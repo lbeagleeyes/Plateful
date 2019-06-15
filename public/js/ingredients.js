@@ -29,7 +29,7 @@ $(document).ready(function () {
 
 function addIngredientBtn(ingredientName) {
   var optionBtn = new $("<button>", {
-    class: "waves-effect waves-light btn-small",
+    class: "waves-effect cyan darken-2 btn-small",
     "data-name": ingredientName,
     id: ingredientName,
     text: ingredientName,
@@ -85,11 +85,11 @@ function createCard(recipe) {
   });
 
   var cardImg = new $('<div>', {
-    class: 'card-image waves-effect waves-block waves-light'
+    class: 'card-image waves-effect waves-block cyan darken-2'
   });
 
   var image = new $('<img>', {
-    class: 'activator',
+    class: 'activator ',
     src: recipe.image_url
   });
 
@@ -97,15 +97,15 @@ function createCard(recipe) {
   card.append(cardImg);
 
   var cardContent = new $('<div>', {
-    class:"card-content"
+    class:"card-content "
   });
   var title = new $('<span>', {
-    class: 'card-title activator grey-text text-darken-4',
+    class: 'card-title activator grey-text text-darken-4 flow-text ',
     text: recipe.title,
   });
 
   var moreIcon = new $('<i>', {
-    class: 'material-icons right',
+    class: 'material-icons right ',
     text: 'more_vert'
   });
 

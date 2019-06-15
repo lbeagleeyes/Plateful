@@ -79,7 +79,12 @@ h5 {
 
 
 /* Recipe cards */
+.collection {
+  display: inline-block; 
+}
+
 #recipes {
+  width: auto; 
   margin-top: 30px;
   padding-left: 100px;
 }
@@ -90,6 +95,17 @@ h5 {
   top: 120px;
   right: 60px;
   color: darkslategrey;
+}
+
+/* Limits card image size */
+.card-image {
+  height: 150px;
+  width: auto;
+}
+
+/* Limits card title size */
+.card-title {
+  font-size: 15px !important;
 }
 
 .card-content {

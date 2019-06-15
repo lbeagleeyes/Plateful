@@ -24,7 +24,7 @@ module.exports = function (app) {
   // });
 
   app.get('/recipes/:ingr', function (req, res) {
-    var queryURL = `https://www.food2fork.com/api/search?key=${process.env.API_KEY}&q=${req.params.ingr}`;
+    var queryURL = `https://www.food2fork.com/api/search?key=${process.env.API_KEY}&q=${req.params.ingr}&count=10`;
 
     console.log("received requests. Params: " + req.params.ingr);
     console.log("Query = " + queryURL);
