@@ -2,6 +2,7 @@ var db = require("../models");
 require("dotenv").config();
 var axios = require("axios");
 
+
 module.exports = function (app) {
   // Load index page
   app.get("/", function (req, res) {
@@ -34,15 +35,19 @@ module.exports = function (app) {
     });
   });
 
-  app.get('/calendarRecipes/:usrId', function (req, res) {
-    var user = req.params.usrId;
+  app.get('/calendarRecipes/:usrId/:startDate/:endDate', function (req, res) {
+    const Op = db.Sequelize.Op;
     db.CalendarRecipe.findAll({
       where: {
-        userId: user
-      }}).then(function(result){
-        res.json(result);
-      });
+        userId: req.params.usrId,
+        date: {
+          [Op.between]: [req.params.startDate, req.params.endDate]
+        }
+      }
+    }).then(function (result) {
+      res.json(result);
     });
+  });
 
 
   // Render 404 page for any unmatched routes

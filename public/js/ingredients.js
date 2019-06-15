@@ -1,6 +1,13 @@
 var ingredientsList = [];
 
 $(document).ready(function () {
+
+  loadIngredients();
+  //loadCalendar();
+  
+});
+
+function loadIngredients(){
   $.ajax({
     type: "GET",
     url: "/ingredients",
@@ -25,7 +32,7 @@ $(document).ready(function () {
       });
     }
   });
-});
+}
 
 function addIngredientBtn(ingredientName) {
   var optionBtn = new $("<button>", {

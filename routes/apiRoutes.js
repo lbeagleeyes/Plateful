@@ -14,7 +14,8 @@ module.exports = function(app) {
     });
   });
   // Create a new example
-  app.post("/api", function(req, res) {
+  app.post("/api/newCalendarRecipe", function(req, res) {
+    console.log(req.body);
     db.CalendarRecipe.create(req.body).then(function(dbExample) {
       res.json(dbExample);
     });
