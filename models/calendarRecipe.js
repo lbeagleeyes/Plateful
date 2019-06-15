@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     apiId: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false
     },
     date: {

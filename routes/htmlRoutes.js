@@ -5,23 +5,10 @@ var axios = require("axios");
 module.exports = function (app) {
   // Load index page
   app.get("/", function (req, res) {
-    // db.Example.findAll({}).then(function(dbExamples) {
     res.render("index", {
       msg: "Welcome!"
-      // ,
-      // examples: dbExamples
     });
   });
-
-
-  // // Load example page and pass in an example by id
-  // app.get("/example/:id", function(req, res) {
-  //   db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-  //     res.render("example", {
-  //       example: dbExample
-  //     });
-  //   });
-  // });
 
   app.get('/recipes/:ingr', function (req, res) {
     var queryURL = `https://www.food2fork.com/api/search?key=${process.env.API_KEY}&q=${req.params.ingr}&count=10`;
@@ -47,12 +34,16 @@ module.exports = function (app) {
     });
   });
 
-  //use when loading calendar recipes
-  // var hbsObject = {
-  //   recipes: response.data.recipes
-  // };
-  // //console.log(hbsObject);
-  // res.render("index", hbsObject);
+  app.get('/calendarRecipes/:usrId', function (req, res) {
+    var user = req.params.usrId;
+    db.CalendarRecipe.findAll({
+      where: {
+        userId: user
+      }}).then(function(result){
+        res.json(result);
+      });
+    });
+
 
   // Render 404 page for any unmatched routes
   app.get("*", function (req, res) {
