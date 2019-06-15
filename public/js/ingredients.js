@@ -29,7 +29,7 @@ $(document).ready(function () {
 
 function addIngredientBtn(ingredientName) {
   var optionBtn = new $("<button>", {
-    class: "waves-effect cyan darken-2 btn-small",
+    class: "waves-effect cyan darken-2 btn-small ingredients-buttons",
     "data-name": ingredientName,
     id: ingredientName,
     text: ingredientName,
@@ -100,12 +100,12 @@ function createCard(recipe) {
     class:"card-content "
   });
   var title = new $('<span>', {
-    class: 'card-title activator grey-text text-darken-4 flow-text ',
+    class: 'card-title activator grey-text text-darken-4 flow-text',
     text: recipe.title,
   });
 
   var moreIcon = new $('<i>', {
-    class: 'material-icons right ',
+    class: 'material-icons right more',
     text: 'more_vert'
   });
 
@@ -113,7 +113,11 @@ function createCard(recipe) {
   cardContent.append(title);
 
   var link = $('<p>');
-  var recipeURL = $("<a href>").attr("src", recipe.source_url);
+  var recipeURL = $("<a>", {
+    href:recipe.source_url,
+    text:recipe.publisher,
+    target: "_blank"
+  });
 
   link.append(recipeURL);
   cardContent.append(link);
