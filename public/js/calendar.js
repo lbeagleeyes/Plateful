@@ -47,8 +47,8 @@ $(document).ready(function () {
       },
       {
         title: "Conference",
-        start: "2019-06-11",
-        end: "2019-06-13"
+        start: "2019-06-16",
+        end: "2019-06-18"
       },
       {
         title: "Meeting",
@@ -57,20 +57,20 @@ $(document).ready(function () {
       },
       {
         title: "Lunch",
-        start: "2019-06-12T12:00:00"
+        start: "2019-06-14T12:00:00"
       },
       {
         title: "Meeting",
-        start: "2019-06-12T14:30:00"
+        start: "2019-06-15T14:30:00"
       },
       {
         title: "Birthday Party",
-        start: "2019-06-13T07:00:00"
+        start: "2019-06-16T07:00:00"
       },
       {
         title: "Click for Google",
         url: "http://google.com/",
-        start: "2019-06-28"
+        start: "2019-06-15"
       }
     ]
   });
