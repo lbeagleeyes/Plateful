@@ -84,7 +84,8 @@ h5 {
   padding-left: 100px;
 }
 
-.card-title {
+/* Empty recipe span, this is very important to keep for card formatting */
+.empty {
   position: relative;
   top: 120px;
   right: 60px;
@@ -98,8 +99,6 @@ h5 {
 /* 3 Day Calendar */
 #calendar {
   margin-top: 30px;
-  padding-left: 80px;
-  padding-bottom: 50px;
 }
 
 

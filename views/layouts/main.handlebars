@@ -6,6 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+
+  <!-- fullCalendar JS -->
+  {{!-- <link href='fullcalendar/core/main.css' rel='stylesheet' href="/public/js/calendar.js"/>
+  <link href='fullcalendar/daygrid/main.css' rel='stylesheet'href="/public/js/calendar.js" /> --}}
+
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
@@ -33,18 +38,6 @@
   <br>
   <br>
 
-  <!-- Search bar -->
-  <form id="search">
-    <div class="row">
-      <div class="input-field inline col s12">
-        <input id="ingredients" type="text" class="validate">
-        <label for="ingredients" id="text">Enter the ingredients in your fridge (separated by commas), and we'll provide
-          you with tailored recipes!</label>
-        <span class="helper-text" data-error="wrong" data-success="right">chicken, eggs, rice, etc.</span>
-        <button class="btn waves-effect cyan darken-2" id="submit-button" type="submit" name="action">SEARCH</button>
-      </div>
-  </form>
-
 
   {{{body}}}
 
@@ -57,10 +50,15 @@
   </footer>
 
   <!-- jQuery -->
-  <script src="jquery-3.4.0.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <!-- fullCalendar JS script -->
+  {{!-- <script src='fullcalendar/core/main.js'></script>
+  <script src='fullcalendar/daygrid/main.js'></script> --}}
+
 
 </body>
 
