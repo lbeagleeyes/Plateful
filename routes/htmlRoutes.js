@@ -3,8 +3,8 @@ require("dotenv").config();
 var axios = require("axios");
 var authController = require("../controllers/authcontroller");
 
-module.exports = function (app) {
-  
+module.exports = function (app, passport) {
+
   app.get("/", function (req, res) {
     // db.Example.findAll({}).then(function(dbExamples) {
     res.render("index", {
@@ -16,6 +16,12 @@ module.exports = function (app) {
 
   // Auth Routes
   app.get("/signup", authController.signup);
+  app.post("/signup", passport.authenticate("local-signup", {
+    successRedirect: "/dashboard",
+    failureRedirect: "/signup"
+  }
+  ));
+
   app.get("/signin", authController.signin);
 
   // // Load example page and pass in an example by id
@@ -27,8 +33,8 @@ module.exports = function (app) {
   //   });
   // });
 
-  app.get('/recipes/:ingr', function (req, res) {
-    var queryURL = `https://www.food2fork.com/api/search?key=${process.env.API_KEY}&q=${req.params.ingr}`;
+  app.get("/recipes/:ingr", function (req, res) {
+    var queryURL = "https://www.food2fork.com/api/search?key=${process.env.API_KEY}&q=${req.params.ingr}";
 
     console.log("received requests. Params: " + req.params.ingr);
     console.log("Query = " + queryURL);
@@ -40,8 +46,8 @@ module.exports = function (app) {
     });
   });
 
-  app.get('/recipe/:id', function (req, res) {
-    var queryURL = `https://www.food2fork.com/api/get?key=${process.env.API_KEY}&rId=${req.params.id}`;
+  app.get("/recipe/:id", function (req, res) {
+    var queryURL = "https://www.food2fork.com/api/get?key=${process.env.API_KEY}&rId=${req.params.id}";
 
     console.log("Query = " + queryURL);
 
@@ -60,6 +66,7 @@ module.exports = function (app) {
 
   // Render 404 page for any unmatched routes
   app.get("*", function (req, res) {
+    console.log("sending 404.");
     res.render("404");
   });
 };
