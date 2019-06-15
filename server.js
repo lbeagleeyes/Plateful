@@ -15,7 +15,7 @@ var bodyParser = require("body-parser");
 
 //load passport strategies
 // var passport = require("passport");
-require("./config/passport.js")(passport, db.user);
+require("./config/passport.js")(passport, db.User);
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));

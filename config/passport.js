@@ -51,12 +51,20 @@ module.exports = function(passport, user) {
 
   //serialize
   passport.serializeUser(function(user, done) {
+    console.log("Serializing the following User: \n" + user + "\n");
     done(null, user.id);
   });
 
   // deserialize user
   passport.deserializeUser(function(id, done) {
-    User.findById(id).then(function(user) {
+    console.log(
+      "Trying to Deserialize the following User with ID: \nID = " +
+        id +
+        "/ User: " +
+        User +
+        "\n"
+    );
+    User.findByPk(id).then(function(user) {
       if (user) {
         done(null, user.get());
       } else {
