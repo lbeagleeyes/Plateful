@@ -49,6 +49,34 @@ module.exports = function (app) {
     });
   });
 
+  app.get('/calendarRecipesInDay/:usrId/:date', function (req, res) {
+    db.CalendarRecipe.findAll({
+      where: {
+        userId: req.params.usrId,
+        date: req.params.date
+      }
+    }).then(function (result) {
+      res.json(result);
+    });
+  });
+
+  app.get('/calendarRecipesInDayForMealtime/:usrId/:date/:mealtime', function (req, res) {
+    console.log("date: " + req.params.date);
+    db.CalendarRecipe.findAll({
+      where: {
+        userId: req.params.usrId,
+        date: req.params.date, 
+        mealtime: req.params.mealtime
+      }
+    }).then(function (result) {
+     // console.log(result);
+      res.json(result);
+    });
+  });
+  
+
+  
+
 
   // Render 404 page for any unmatched routes
   app.get("*", function (req, res) {
