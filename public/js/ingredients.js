@@ -109,7 +109,35 @@ function createCard(recipe) {
     text: 'more_vert'
   });
 
+  // Calendar icon and modal
+  var calendarIcon = new $('<a>', {
+    class: 'material-icons date_range right modal-trigger', // modal-trigger class needed for calendar modal
+    text: 'date_range',
+    href: '#modal1'
+  });
+
+  var calendarModal = new $('<div>', {
+    class: 'modal',
+    id: 'modal1',
+  });
+
+  var modalContent = new $('<div>', {
+    class: 'modal-content',
+  });
+
+  var closeModal = new $('<a>', {
+    class: 'modal-action modal-close cyan darken-2 btn-flat',
+    href: '#!',
+    text: 'CLOSE'
+  })
+
+  closeModal.append(modalContent); // Appends link to close to modal content
+  modalContent.append(calendarModal); // Appends modal content to div
+  
+
+  // Recipe cards
   title.append(moreIcon);
+  cardContent.append(calendarIcon); 
   cardContent.append(title);
 
   var link = $('<p>');
@@ -148,3 +176,10 @@ function clearIngredientsList() {
   ingredientsList = [];
   $("#buttons-view").empty();
 }
+
+
+
+// Calendar modal event listener
+$('.modal-trigger').click(function() {
+  $('#modal1').modal();
+});
