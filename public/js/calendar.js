@@ -23,6 +23,7 @@ function displayDay(day){
   $('#days').append(dayCol);
 }
 
+
 function displayMealtime(mealtime, day){
   var date = day.format("YYYY-MM-DD");
   console.log("Date being queried: " + date);
@@ -36,6 +37,13 @@ function displayMealtime(mealtime, day){
         $(row).append($('<div>', {
           class: "col s4", 
           text: ""
+        }).on("drop", function(ev){
+          ev.preventDefault();
+          var recipe = ev.originalEvent.dataTransfer.getData("recipe");
+          var elementId = ev.originalEvent.dataTransfer.getData("elementId");
+          ev.target.appendChild(document.getElementById(elementId));
+        }).on("dragover", function(ev){
+          ev.preventDefault();
         }));
       }else{
         console.log(response[0]);

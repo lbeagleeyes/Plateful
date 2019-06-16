@@ -4,10 +4,10 @@ $(document).ready(function () {
 
   loadIngredients();
   //loadCalendar();
-  
+
 });
 
-function loadIngredients(){
+function loadIngredients() {
   $.ajax({
     type: "GET",
     url: "/ingredients",
@@ -88,7 +88,11 @@ function search() {
 function createCard(recipe) {
   var card = new $('<div>', {
     class: 'card small recipeCard',
+    draggable: true,
     id: recipe.apiId
+  }).on("dragstart", function (ev) {
+    ev.originalEvent.dataTransfer.setData("recipe", JSON.stringify(recipe));
+    ev.originalEvent.dataTransfer.setData("elementId", ev.target.id);
   });
 
   var cardImg = new $('<div>', {
@@ -104,7 +108,7 @@ function createCard(recipe) {
   card.append(cardImg);
 
   var cardContent = new $('<div>', {
-    class:"card-content "
+    class: "card-content "
   });
   var title = new $('<span>', {
     class: 'card-title activator grey-text text-darken-4 flow-text',
@@ -140,7 +144,7 @@ function createCard(recipe) {
 
   // closeModal.append(modalContent); // Appends link to close to modal content
   // modalContent.append(calendarModal); // Appends modal content to div
-  
+
 
   // Recipe cards
   title.append(moreIcon);
@@ -149,8 +153,8 @@ function createCard(recipe) {
 
   var link = $('<p>');
   var recipeURL = $("<a>", {
-    href:recipe.url,
-    text:recipe.publisher,
+    href: recipe.url,
+    text: recipe.publisher,
     target: "_blank"
   });
 
@@ -158,7 +162,7 @@ function createCard(recipe) {
   cardContent.append(link);
   card.append(cardContent);
 
-  var reveal = $('<div>').attr("class",'card-reveal');
+  var reveal = $('<div>').attr("class", 'card-reveal');
   var revealTitle = new $('<span>', {
     class: "card-title grey-text text-darken-4",
     text: recipe.title
@@ -187,6 +191,6 @@ function clearIngredientsList() {
 
 
 // Calendar modal event listener
-$('.modal-trigger').click(function() {
+$('.modal-trigger').click(function () {
   $('#modal1').modal();
 });
