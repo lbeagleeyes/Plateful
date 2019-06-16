@@ -71,61 +71,34 @@ h5 {
   font-size: 16px;
 }
 
-#submit-button {
+#search-button {
+  float: right !important;
   position: relative;
-  top: 10px;
-  right: 4px;
+  bottom: 25px;
 }
 
 
 /* Recipe cards */
-.collection {
-  display: inline-block; 
+.activator {
+  max-height: 150px !important;
 }
 
 #recipes {
-  width: auto; 
   margin-top: 30px;
-  padding-left: 100px;
+  margin-left: 20px;
 }
 
-/* Empty recipe span, this is very important to keep for card formatting */
-.empty {
-  position: relative;
-  top: 120px;
-  right: 60px;
-  color: darkslategrey;
-}
-
-/* Limits card image size */
 .card-image {
-  height: 150px;
-  width: auto;
+  width: 100% !important;
+  height: 100% !important;
 }
 
-/* Limits card title size */
 .card-title {
   font-size: 15px !important;
-}
-
-.card-content {
-  color: darkslategrey;
+  line-height: 1.5 !important;
 }
 
 /* 3 Day Calendar */
 #calendar {
   margin-top: 30px;
-}
-
-
-/* Footer */
-#footer {
-  border-top: 6px solid lightgrey;
-  color: white;
-  text-align: center;
-}
-
-
-
-
-   
+} 

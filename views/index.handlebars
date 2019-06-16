@@ -3,39 +3,37 @@
   <div class="row">
     <div class="input-field inline col s12">
       <input type="text" id="ingredients" class="autocomplete">
-      <label for="ingredients" id="text">Enter the ingredients in your fridge (separated by commas), and we'll provide you with tailored recipes!</label>
+      <label for="ingredients" id="text">To get started, just add the ingredients in your fridge, and we'll provide
+        you with tailored recipes!</label>
       <span class="helper-text" data-error="wrong" data-success="right">chicken, eggs, rice, etc.</span>
       <div class="container" id="buttons-view">
         <!-- Ingredient buttons go here -->
       </div>
-      <button class="btn waves-effect cyan darken-2" id="search-button" type="submit" name="action" onclick="search()"><i class="material-icons">search</i>SEARCH</button>
+      <button class="btn waves-effect cyan darken-2" id="search-button" type="submit" name="action"
+        onclick="search()"><i class="material-icons">search</i>SEARCH</button>
     </div>
 </form>
+
+<!-- Recipe results and calendar titles -->
+<div class="row">
+  <div class="col s4">
+    <h6>Recipe Results</h6>
+    <hr><br>
+  </div>
+  <div class="col s7 push-s1">
+    <h6>Calendar</h6>
+    <hr><br>
+  </div>
+</div>
 
 <!-- Recipe results and calendar -->
 <!-- Recipe results-->
 <div class="row">
-  <div class="col s2">
-    <!-- Push moves column to the right -->
-    <h6>Recipe Results</h6>
-    <hr><br>
+  <div class="col s4" id="recipes">
+</div>
 
-  <!-- Recipe results and calendar -->
-  <!-- Recipe results-->
-  <div class="container">
-    <ul class="collection" id="recipes">
-    {{!-- {{#each recipes}}
-    {{>recipes/recipe-block}}
-    {{/each}} --}}
-
-    </ul>
-  </div>
-
-  <!-- Calendar-->
-  <div class="col s8" id="calendar">
-    <!-- Push moves column to the right -->
-    <h6>Calendar</h6>
-    <hr><br>
+<!-- Calendar-->
+  <div class="col s7 push-s1" id="calendar">
     <table>
       <thead>
         <tr id="days">
@@ -67,7 +65,7 @@
 <script src="/js/calendar.js"></script>
 
 
-{{!-- 
+  {{!-- 
 
 
 <!-- Boilerplate code -->
