@@ -88,7 +88,7 @@ function search() {
 function createCard(recipe) {
   var card = new $('<div>', {
     class: 'card small recipeCard',
-    id: recipe.recipe_id
+    id: recipe.apiId
   });
 
   var cardImg = new $('<div>', {
@@ -97,7 +97,7 @@ function createCard(recipe) {
 
   var image = new $('<img>', {
     class: 'activator ',
-    src: recipe.image_url
+    src: recipe.imgUrl
   });
 
   cardImg.append(image);
@@ -117,39 +117,39 @@ function createCard(recipe) {
   });
 
   // Calendar icon and modal
-  var calendarIcon = new $('<a>', {
-    class: 'material-icons date_range right modal-trigger', // modal-trigger class needed for calendar modal
-    text: 'date_range',
-    href: '#modal1'
-  });
+  // var calendarIcon = new $('<a>', {
+  //   class: 'material-icons date_range right modal-trigger', // modal-trigger class needed for calendar modal
+  //   text: 'date_range',
+  //   href: '#modal1'
+  // });
 
-  var calendarModal = new $('<div>', {
-    class: 'modal',
-    id: 'modal1',
-  });
+  // var calendarModal = new $('<div>', {
+  //   class: 'modal',
+  //   id: 'modal1',
+  // });
 
-  var modalContent = new $('<div>', {
-    class: 'modal-content',
-  });
+  // var modalContent = new $('<div>', {
+  //   class: 'modal-content',
+  // });
 
-  var closeModal = new $('<a>', {
-    class: 'modal-action modal-close cyan darken-2 btn-flat',
-    href: '#!',
-    text: 'CLOSE'
-  })
+  // var closeModal = new $('<a>', {
+  //   class: 'modal-action modal-close cyan darken-2 btn-flat',
+  //   href: '#!',
+  //   text: 'CLOSE'
+  // })
 
-  closeModal.append(modalContent); // Appends link to close to modal content
-  modalContent.append(calendarModal); // Appends modal content to div
+  // closeModal.append(modalContent); // Appends link to close to modal content
+  // modalContent.append(calendarModal); // Appends modal content to div
   
 
   // Recipe cards
   title.append(moreIcon);
-  cardContent.append(calendarIcon); 
+  //cardContent.append(calendarIcon); 
   cardContent.append(title);
 
   var link = $('<p>');
   var recipeURL = $("<a>", {
-    href:recipe.source_url,
+    href:recipe.url,
     text:recipe.publisher,
     target: "_blank"
   });

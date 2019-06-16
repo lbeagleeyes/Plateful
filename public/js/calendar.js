@@ -17,7 +17,7 @@ $(document).ready(function () {
 
 function displayDay(day){
   var dayCol = new $('<div>', {
-    class: "col s4",
+    class: "col s4 day",
     text: day.format("MMMM Do YYYY")
   });
   $('#days').append(dayCol);
@@ -42,7 +42,7 @@ function displayMealtime(mealtime, day){
         var recipeCell = new $('<div>', {
           class: "col s4"
         });
-        var card = createCalendarCard(response[0]);
+        var card = createCard(response[0]);
         recipeCell.append(card);
         
         $(row).append(recipeCell);
@@ -51,47 +51,6 @@ function displayMealtime(mealtime, day){
   });
 }
 
-function createCalendarCard(recipe){
-  var card = new $('<div>', {
-    class: 'card small recipeCard',
-    id: recipe.id
-  });
-
-  var cardImg = new $('<div>', {
-    class: 'card-image waves-effect waves-block cyan darken-2'
-  });
-
-  var image = new $('<img>', {
-    class: 'activator',
-    src: recipe.imgUrl
-  });
-
-  cardImg.append(image);
-  card.append(cardImg);
-
-  var cardContent = new $('<div>', {
-    class:"card-content "
-  });
-  var title = new $('<span>', {
-    class: 'card-title activator grey-text text-darken-4 flow-text ',
-    text: recipe.title,
-  });
-  cardContent.append(title);
-
-  var link = $('<p>');
-  var recipeURL = $("<a>", {
-    href:recipe.url,
-    text:recipe.publisher,
-    target: "_blank"
-  });
-
-  link.append(recipeURL);
-  cardContent.append(link);
-  card.append(cardContent);
-
-  return card;
-
-}
 function getUserRecipes(day) {
   $.ajax({
     type: "GET",

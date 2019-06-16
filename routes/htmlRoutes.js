@@ -18,9 +18,15 @@ module.exports = function (app) {
     console.log("Query = " + queryURL);
 
     axios.get(queryURL).then(function (response) {
-      var recipes = response.data.recipes;
-      console.log(recipes);
-      res.send(recipes);
+      res.send(response.data.recipes.map(recipe => {
+        return {
+          title: recipe.title,
+          apiId: recipe.recipe_id,
+          url: recipe.source_url,
+          imgUrl: recipe.image_url,
+          publisher: recipe.publisher
+        }
+      }));
     });
   });
 
@@ -65,21 +71,12 @@ module.exports = function (app) {
     db.User.findOne({
       where: {
         id: req.params.usrId,
-        // date: req.params.date,
-        // mealtime: req.params.mealtime
       },
       include: [{
         model: db.Recipe,
         through: { where: { date: req.params.date, mealtime: req.params.mealtime } }
-        // ,
-        // as: "users"
       }
-      // , {
-      //   model: db.CalendarRecipe,
-      //   attributes: ['date', 'mealtime'],
-      //   through: { where: { date: req.params.date, mealtime: req.params.mealtime } }
-      // }
-    ]
+      ]
     }).then(function (result) {
       // console.log(result);
       res.json(result.Recipes);
