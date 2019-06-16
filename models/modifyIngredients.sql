@@ -1,0 +1,8 @@
+use platefuldb;
+
+alter table ingredients
+MODIFY COLUMN updatedAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+MODIFY COLUMN createdAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP;
+
+
+SELECT * FROM platefuldb.ingredients;
