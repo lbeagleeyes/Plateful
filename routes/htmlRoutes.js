@@ -4,7 +4,7 @@ var axios = require("axios");
 var authController = require("../controllers/authcontroller");
 
 module.exports = function(app, passport) {
-  app.get("/", function(req, res) {
+  app.get("/", isLoggedIn, function(req, res) {
     // db.Example.findAll({}).then(function(dbExamples) {
     res.render("index", {
       msg: "Welcome!"
@@ -74,4 +74,11 @@ module.exports = function(app, passport) {
     console.log("sending 404.");
     res.render("404");
   });
+
+  function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+      return next();
+    }
+    res.redirect("/signin");
+  }
 };
