@@ -1,11 +1,22 @@
-<form id="signup" name="signup" method="post" action="/signup">
-    <label for="email">Email Address</label>
-    <input class="text" name="email" type="email" />
-    <label for="firstname">Firstname</label>
-    <input name="firstname" type="text" />
-    <label for="lastname">Lastname</label>
-    <input name="lastname" type="text" />
-    <label for="password">Password</label>
-    <input name="password" type="password" />
-    <input class="btn" type="submit" value="Sign Up" />
-</form>
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <form id="signup" name="signup" method="post" action="/signup">
+                <label for="email">Email Address</label>
+                <input class="text" name="email" type="email" />
+                <label for="firstname">Firstname</label>
+                <input name="firstname" type="text" />
+                <label for="lastname">Lastname</label>
+                <input name="lastname" type="text" />
+                <label for="password">Password</label>
+                <input name="password" type="password" />
+                <input class="btn" type="submit" value="Sign Up" />
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 center">
+            Already have an email? Sign-in here: <a class="waves-effect waves-light btn" href="/signin">Sign-in</a>
+        </div>
+    </div>
+</div>
