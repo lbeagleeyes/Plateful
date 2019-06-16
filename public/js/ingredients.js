@@ -70,8 +70,17 @@ function search() {
       if (response.length > 0) {
         response.forEach(recipe => {
           //call card creator here
-          //console.log(recipe);
-          var card = createCard(recipe);
+    
+          // ajax call to get data for ingredients
+          // $.ajax({
+          //   type: "get",
+          //   url: "/recipe/" + recipe.apiId,
+          //   success: function (resIngredients) {
+          //     ingredientsArray = resIngredients;
+          //   }
+          // })
+
+          var card = createCard(recipe); // removed ingredientsArray variable for now
           $('#recipes').append(card);
         });
       } else {
@@ -173,7 +182,9 @@ function createCard(recipe) {
     text: 'close'
   });
 
-  var ingredients = $('<p>').text("Placeholder for ingredients detail");
+  // var ingredients = $("<p>", {
+  //   text: "Ingredients: " + ingredientArray.recipe.ingredients
+  // });
 
   revealTitle.append(closeIcon);
   reveal.append(revealTitle);
@@ -187,10 +198,3 @@ function clearIngredientsList() {
   ingredientsList = [];
   $("#buttons-view").empty();
 }
-
-
-
-// Calendar modal event listener
-$('.modal-trigger').click(function () {
-  $('#modal1').modal();
-});

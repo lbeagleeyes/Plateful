@@ -57,7 +57,7 @@ module.exports = function(app, passport) {
           apiId: recipe.recipe_id,
           url: recipe.source_url,
           imgUrl: recipe.image_url,
-          publisher: recipe.publisher
+          publisher: recipe.publisher,
         }
       }));
     });
