@@ -35,47 +35,59 @@ module.exports = function (app) {
     });
   });
 
-  app.get('/calendarRecipes/:usrId/:startDate/:endDate', function (req, res) {
-    const Op = db.Sequelize.Op;
-    db.CalendarRecipe.findAll({
-      where: {
-        userId: req.params.usrId,
-        date: {
-          [Op.between]: [req.params.startDate, req.params.endDate]
-        }
-      }
-    }).then(function (result) {
-      res.json(result);
-    });
-  });
+  // app.get('/calendarRecipes/:usrId/:startDate/:endDate', function (req, res) {
+  //   const Op = db.Sequelize.Op;
+  //   db.CalendarRecipe.findAll({
+  //     where: {
+  //       userId: req.params.usrId,
+  //       date: {
+  //         [Op.between]: [req.params.startDate, req.params.endDate]
+  //       }
+  //     }
+  //   }).then(function (result) {
+  //     res.json(result);
+  //   });
+  // });
 
-  app.get('/calendarRecipesInDay/:usrId/:date', function (req, res) {
-    db.CalendarRecipe.findAll({
-      where: {
-        userId: req.params.usrId,
-        date: req.params.date
-      }
-    }).then(function (result) {
-      res.json(result);
-    });
-  });
+  // app.get('/calendarRecipesInDay/:usrId/:date', function (req, res) {
+  //   db.CalendarRecipe.findAll({
+  //     where: {
+  //       userId: req.params.usrId,
+  //       date: req.params.date
+  //     }
+  //   }).then(function (result) {
+  //     res.json(result);
+  //   });
+  // });
 
   app.get('/calendarRecipesInDayForMealtime/:usrId/:date/:mealtime', function (req, res) {
     console.log("date: " + req.params.date);
-    db.CalendarRecipe.findAll({
+    db.User.findOne({
       where: {
-        userId: req.params.usrId,
-        date: req.params.date, 
-        mealtime: req.params.mealtime
+        id: req.params.usrId,
+        // date: req.params.date,
+        // mealtime: req.params.mealtime
+      },
+      include: [{
+        model: db.Recipe,
+        through: { where: { date: req.params.date, mealtime: req.params.mealtime } }
+        // ,
+        // as: "users"
       }
+      // , {
+      //   model: db.CalendarRecipe,
+      //   attributes: ['date', 'mealtime'],
+      //   through: { where: { date: req.params.date, mealtime: req.params.mealtime } }
+      // }
+    ]
     }).then(function (result) {
-     // console.log(result);
-      res.json(result);
+      // console.log(result);
+      res.json(result.Recipes);
     });
   });
-  
 
-  
+
+
 
 
   // Render 404 page for any unmatched routes

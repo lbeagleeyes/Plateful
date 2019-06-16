@@ -84,6 +84,10 @@ h5 {
   max-height: 100px !important;
 } */
 
+.activator {
+  height: 100% !important;
+}
+
 #recipes {
   margin-top: 30px;
   margin-left: 20px;

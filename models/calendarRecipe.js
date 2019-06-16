@@ -1,25 +1,27 @@
+// var User = require("user.js");
+// var Recipe = require("recipe.js");
 module.exports = function(sequelize, DataTypes) {
   var CalendarRecipe = sequelize.define("CalendarRecipe", {
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    apiId: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
     date: {
       type: DataTypes.DATEONLY
     },
-    mealtime: DataTypes.STRING
-  });
-
-  CalendarRecipe.associate = function(models) {
-    CalendarRecipe.belongsTo(models.User, {
-      foreignKey: {
-        allowNull: false
+    mealtime: DataTypes.STRING,
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "User",
+        key: "id"
       }
-    });
-  };
+    },
+    recipeId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "Recipe",
+        key: "id"
+      }
+    }
+  });
   return CalendarRecipe;
 };

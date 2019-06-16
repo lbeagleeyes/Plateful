@@ -16,7 +16,10 @@ $(document).ready(function () {
 });
 
 function displayDay(day){
-  var dayCol = new $('<th>').text(day.format("MMMM Do YYYY"));
+  var dayCol = new $('<div>', {
+    class: "col s4",
+    text: day.format("MMMM Do YYYY")
+  });
   $('#days').append(dayCol);
 }
 
@@ -30,10 +33,15 @@ function displayMealtime(mealtime, day){
       console.log(date + " - " + mealtime + " : " + JSON.stringify(response));
       var row = "#"+mealtime.toLowerCase();
       if(response.length === 0){
-        $(row).append($('<th>').text(""));
+        $(row).append($('<div>', {
+          class: "col s4", 
+          text: ""
+        }));
       }else{
         console.log(response[0]);
-        var recipeCell = new $('<th>');
+        var recipeCell = new $('<div>', {
+          class: "col s4"
+        });
         var card = createCalendarCard(response[0]);
         recipeCell.append(card);
         
@@ -45,9 +53,21 @@ function displayMealtime(mealtime, day){
 
 function createCalendarCard(recipe){
   var card = new $('<div>', {
-    class: 'card recipeCard',
-    id: recipe.recipe_id
+    class: 'card small recipeCard',
+    id: recipe.id
   });
+
+  var cardImg = new $('<div>', {
+    class: 'card-image waves-effect waves-block cyan darken-2'
+  });
+
+  var image = new $('<img>', {
+    class: 'activator',
+    src: recipe.imgUrl
+  });
+
+  cardImg.append(image);
+  card.append(cardImg);
 
   var cardContent = new $('<div>', {
     class:"card-content "
@@ -60,7 +80,7 @@ function createCalendarCard(recipe){
 
   var link = $('<p>');
   var recipeURL = $("<a>", {
-    href:recipe.source_url,
+    href:recipe.url,
     text:recipe.publisher,
     target: "_blank"
   });

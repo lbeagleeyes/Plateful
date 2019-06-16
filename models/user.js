@@ -33,9 +33,11 @@ module.exports = function (sequelize, DataTypes) {
     }
   });
 
-  User.associate = function(models) {
-    User.hasMany(models.CalendarRecipe, {
-      onDelete: "cascade"
+  User.associate = (models) => {
+    User.belongsToMany(models.Recipe, {
+      through: 'CalendarRecipe',
+      // as: 'users',
+      foreignKey: 'userId'
     });
   };
   return User;
