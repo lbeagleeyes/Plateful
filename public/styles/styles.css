@@ -61,9 +61,9 @@ h5 {
 
 #search {
   position: relative;
-  left: 80px;
+  left: 12.5%;
   bottom: 20px;
-  width: 50%;
+  width: 75%;
 }
 
 #text {
@@ -78,10 +78,11 @@ h5 {
 }
 
 
-/* Recipe cards */
-.activator {
+/*Recipe cards*/
+/* .activator {
   max-height: 150px !important;
-}
+  max-height: 100px !important;
+} */
 
 #recipes {
   margin-top: 30px;

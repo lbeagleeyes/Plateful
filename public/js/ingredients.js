@@ -87,7 +87,7 @@ function search() {
 
 function createCard(recipe) {
   var card = new $('<div>', {
-    class: 'card recipeCard',
+    class: 'card small recipeCard',
     id: recipe.recipe_id
   });
 
