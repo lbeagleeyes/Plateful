@@ -41,4 +41,15 @@ Object.keys(db).forEach(function(modelName) {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+// console.log(
+//   "=========================================\n======================================="
+// );
+// console.log("Current user is: ");
+// console.log(req.user);
+// console.log("=================");
+// console.log("Current user ID is: " + req.user.id);
+// console.log(
+//   "=========================================\n======================================="
+// );
+
 module.exports = db;

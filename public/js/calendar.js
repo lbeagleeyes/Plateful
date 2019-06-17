@@ -9,13 +9,50 @@ $(document).ready(function () {
     displayMealtime("Dinner", day);
   });
 
+  // console.log("=============================================\n=============================================");
+  // console.log("=============================================\n=============================================");
+  // console.log("=============================================\n=============================================");
+  // console.log("Index JSON reads: ");
+  // console.log(res);
+  // console.log("=============================================\n=============================================");
+  // console.log("=============================================\n=============================================");
+  // console.log("=============================================\n=============================================");
+
   //get today's date, save today, tomorrow and the day after tomorrow
   //get recipes for the current user for the three days
   //display the dates
   //display recipes in calendar according to dates and mealtimes
+  var userID;
+
+  getUID().then(function(resp) {
+    userID = resp;
+
+    console.log("calendar.js stored userID in variable userID = " + userID);
+  });
+
+  // Due to asynchronicity, the below will produce 'UNDEFINED'
 });
 
-function displayDay(day){
+function getUID() {
+  $.ajax({
+    type: "GET",
+    url: `/api/uid`,
+    success: function (response) {
+      console.log("=============================================\n=============================================");
+      console.log("=============================================\n=============================================");
+      console.log("=============================================\n=============================================");
+      // console.log("Frontend reads user ID as: ");
+      // console.log(response)
+      console.log("=============================================\n=============================================");
+      console.log("=============================================\n=============================================");
+      console.log("=============================================\n=============================================");
+
+      return response;
+    }
+  })
+};
+
+function displayDay(day) {
   var dayCol = new $('<div>', {
     class: "col s4 day",
     text: day.format("MMMM Do YYYY")
@@ -24,7 +61,7 @@ function displayDay(day){
 }
 
 
-function displayMealtime(mealtime, day){
+function displayMealtime(mealtime, day) {
   var date = day.format("YYYY-MM-DD");
   console.log("Date being queried: " + date);
   $.ajax({
@@ -32,27 +69,27 @@ function displayMealtime(mealtime, day){
     url: `/calendarRecipesInDayForMealtime/${currentUserId}/${date}/${mealtime}`,
     success: function (response) {
       console.log(date + " - " + mealtime + " : " + JSON.stringify(response));
-      var row = "#"+mealtime.toLowerCase();
-      if(response.length === 0){
+      var row = "#" + mealtime.toLowerCase();
+      if (response.length === 0) {
         $(row).append($('<div>', {
-          class: "col s4", 
+          class: "col s4",
           text: ""
-        }).on("drop", function(ev){
+        }).on("drop", function (ev) {
           ev.preventDefault();
           var recipe = ev.originalEvent.dataTransfer.getData("recipe");
           var elementId = ev.originalEvent.dataTransfer.getData("elementId");
           ev.target.appendChild(document.getElementById(elementId));
-        }).on("dragover", function(ev){
+        }).on("dragover", function (ev) {
           ev.preventDefault();
         }));
-      }else{
+      } else {
         console.log(response[0]);
         var recipeCell = new $('<div>', {
           class: "col s4"
         });
         var card = createCard(response[0]);
         recipeCell.append(card);
-        
+
         $(row).append(recipeCell);
       }
     }

@@ -33,6 +33,20 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/uid", function(req, res) {
+    console.log(
+      "=========================================\n======================================="
+    );
+    console.log("Current user is: ");
+    console.log(req.user);
+    console.log("=================");
+    console.log("Current user ID is: " + req.user.id);
+    console.log(
+      "=========================================\n======================================="
+    );
+    res.json(req.user.id);
+  });
+
   // Create a new example
   // app.post("/api/examples", function(req, res) {
   //   db.Example.create(req.body).then(function(dbExample) {

@@ -6,8 +6,22 @@ var authController = require("../controllers/authcontroller");
 module.exports = function(app, passport) {
   // Load index page
   app.get("/", isLoggedIn, function(req, res) {
+      console.log(
+        "=========================================\n======================================="
+      );
+      console.log("Current user is: ");
+      console.log(req.user);
+      console.log("=================");
+      console.log("Current user ID is: " + req.user.id);
+      console.log(
+        "=========================================\n======================================="
+      );
+
     res.render("index", {
-      msg: "Welcome!"
+      msg: "Welcome!",
+      json: {
+        userid: req.user.id
+      }
     });
   });
 
@@ -19,6 +33,18 @@ module.exports = function(app, passport) {
       successRedirect: "/",
       failureRedirect: "/signup"
     })
+    // .then(function() {
+    //   console.log(
+    //     "=========================================\n======================================="
+    //   );
+    //   console.log("Current user is: ");
+    //   console.log(req.user);
+    //   console.log("=================");
+    //   console.log("Current user ID is: " + req.user.id);
+    //   console.log(
+    //     "=========================================\n======================================="
+    //   );
+    // })
   );
 
   app.get("/signin", authController.signin);
@@ -28,6 +54,18 @@ module.exports = function(app, passport) {
       successRedirect: "/",
       failureRedirect: "/signin"
     })
+    // .then(function() {
+    //   console.log(
+    //     "=========================================\n======================================="
+    //   );
+    //   console.log("Current user is: ");
+    //   console.log(req.user);
+    //   console.log("=================");
+    //   console.log("Current user ID is: " + req.user.id);
+    //   console.log(
+    //     "=========================================\n======================================="
+    //   );
+    // })
   );
 
   app.get("/logout", authController.logout);
@@ -65,7 +103,7 @@ module.exports = function(app, passport) {
 
   app.get("/recipe/:id", function(req, res) {
     var queryURL =
-      "https://www.food2fork.com/api/get?key=${process.env.API_KEY}&rId=${req.params.id}";
+      `https://www.food2fork.com/api/get?key=${process.env.API_KEY}&rId=${req.params.id}`;
 
     console.log("Query = " + queryURL);
 
