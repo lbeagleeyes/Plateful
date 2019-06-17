@@ -4,10 +4,10 @@ $(document).ready(function () {
 
   loadIngredients();
   //loadCalendar();
-  
+
 });
 
-function loadIngredients(){
+function loadIngredients() {
   $.ajax({
     type: "GET",
     url: "/ingredients",
@@ -69,8 +69,6 @@ function search() {
       console.log("Recipes loaded: " + response);
       if (response.length > 0) {
         response.forEach(recipe => {
-          //call card creator here
-          //console.log(recipe);
           var card = createCard(recipe);
           $('#recipes').append(card);
         });
@@ -88,7 +86,11 @@ function search() {
 function createCard(recipe) {
   var card = new $('<div>', {
     class: 'card small recipeCard',
-    id: recipe.recipe_id
+    draggable: true,
+    id: recipe.apiId
+  }).on("dragstart", function (ev) {
+    ev.originalEvent.dataTransfer.setData("recipe", JSON.stringify(recipe));
+    ev.originalEvent.dataTransfer.setData("elementId", ev.target.id);
   });
 
   var cardImg = new $('<div>', {
@@ -97,14 +99,14 @@ function createCard(recipe) {
 
   var image = new $('<img>', {
     class: 'activator ',
-    src: recipe.image_url
+    src: recipe.imgUrl
   });
 
   cardImg.append(image);
   card.append(cardImg);
 
   var cardContent = new $('<div>', {
-    class:"card-content "
+    class: "card-content "
   });
   var title = new $('<span>', {
     class: 'card-title activator grey-text text-darken-4 flow-text',
@@ -116,41 +118,15 @@ function createCard(recipe) {
     text: 'more_vert'
   });
 
-  // Calendar icon and modal
-  var calendarIcon = new $('<a>', {
-    class: 'material-icons date_range right modal-trigger', // modal-trigger class needed for calendar modal
-    text: 'date_range',
-    href: '#modal1'
-  });
-
-  var calendarModal = new $('<div>', {
-    class: 'modal',
-    id: 'modal1',
-  });
-
-  var modalContent = new $('<div>', {
-    class: 'modal-content',
-  });
-
-  var closeModal = new $('<a>', {
-    class: 'modal-action modal-close cyan darken-2 btn-flat',
-    href: '#!',
-    text: 'CLOSE'
-  })
-
-  closeModal.append(modalContent); // Appends link to close to modal content
-  modalContent.append(calendarModal); // Appends modal content to div
-  
 
   // Recipe cards
   title.append(moreIcon);
-  cardContent.append(calendarIcon); 
   cardContent.append(title);
 
   var link = $('<p>');
   var recipeURL = $("<a>", {
-    href:recipe.source_url,
-    text:recipe.publisher,
+    href: recipe.url,
+    text: recipe.publisher,
     target: "_blank"
   });
 
@@ -158,7 +134,7 @@ function createCard(recipe) {
   cardContent.append(link);
   card.append(cardContent);
 
-  var reveal = $('<div>').attr("class",'card-reveal');
+  var reveal = $('<div>').attr("class", 'card-reveal');
   var revealTitle = new $('<span>', {
     class: "card-title grey-text text-darken-4",
     text: recipe.title
@@ -169,12 +145,27 @@ function createCard(recipe) {
     text: 'close'
   });
 
-  var ingredients = $('<p>').text("Placeholder for ingredients detail");
-
   revealTitle.append(closeIcon);
   reveal.append(revealTitle);
-  reveal.append(ingredients);
   card.append(reveal);
+
+  // ajax call to get data for ingredients
+  $.ajax({
+    type: "get",
+    url: "/recipe/" + recipe.apiId,
+    success: function (resIngredients) {
+      var ingredientsUl = $('<ul>', {
+        class:"collection"
+      });
+      resIngredients.ingredients.forEach(ingredient => {
+        ingredientsUl.append($('<li>', {
+          class:"collection-item",
+          text:ingredient
+        }));
+      });
+      reveal.append(ingredientsUl);
+    }
+  });
 
   return card;
 }
@@ -184,9 +175,7 @@ function clearIngredientsList() {
   $("#buttons-view").empty();
 }
 
-
-
 // Calendar modal event listener
-$('.modal-trigger').click(function() {
+$('.modal-trigger').click(function () {
   $('#modal1').modal();
 });

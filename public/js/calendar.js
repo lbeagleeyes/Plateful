@@ -16,9 +16,13 @@ $(document).ready(function () {
 });
 
 function displayDay(day){
-  var dayCol = new $('<th>').text(day.format("MMMM Do YYYY"));
+  var dayCol = new $('<div>', {
+    class: "col s4 day",
+    text: day.format("MMMM Do YYYY")
+  });
   $('#days').append(dayCol);
 }
+
 
 function displayMealtime(mealtime, day){
   var date = day.format("YYYY-MM-DD");
@@ -30,11 +34,24 @@ function displayMealtime(mealtime, day){
       console.log(date + " - " + mealtime + " : " + JSON.stringify(response));
       var row = "#"+mealtime.toLowerCase();
       if(response.length === 0){
-        $(row).append($('<th>').text(""));
+        $(row).append($('<div>', {
+          class: "col s4 calendarCel", 
+          text: ""
+        }).on("drop", function(ev){
+          ev.preventDefault();
+          var recipe = ev.originalEvent.dataTransfer.getData("recipe");
+          var elementId = ev.originalEvent.dataTransfer.getData("elementId");
+          ev.target.appendChild(document.getElementById(elementId));
+          saveRecipe(recipe, mealtime, date);
+        }).on("dragover", function(ev){
+          ev.preventDefault();
+        }));
       }else{
         console.log(response[0]);
-        var recipeCell = new $('<th>');
-        var card = createCalendarCard(response[0]);
+        var recipeCell = new $('<div>', {
+          class: "col s4"
+        });
+        var card = createCard(response[0]);
         recipeCell.append(card);
         
         $(row).append(recipeCell);
@@ -43,35 +60,18 @@ function displayMealtime(mealtime, day){
   });
 }
 
-function createCalendarCard(recipe){
-  var card = new $('<div>', {
-    class: 'card recipeCard',
-    id: recipe.recipe_id
+function saveRecipe(recipe, mealtime, date){
+  //ajax post to create recipe
+  $.ajax({
+    type: "POST",
+    url: "/api/newCalendarRecipe",
+    data: {userId: currentUserId, recipe: recipe, mealtime: mealtime, date:date},
+    success: function(){
+      console.log("recipe saved to calendar");
+    }
   });
-
-  var cardContent = new $('<div>', {
-    class:"card-content "
-  });
-  var title = new $('<span>', {
-    class: 'card-title activator grey-text text-darken-4 flow-text ',
-    text: recipe.title,
-  });
-  cardContent.append(title);
-
-  var link = $('<p>');
-  var recipeURL = $("<a>", {
-    href:recipe.source_url,
-    text:recipe.publisher,
-    target: "_blank"
-  });
-
-  link.append(recipeURL);
-  cardContent.append(link);
-  card.append(cardContent);
-
-  return card;
-
 }
+
 function getUserRecipes(day) {
   $.ajax({
     type: "GET",
@@ -84,25 +84,25 @@ function getUserRecipes(day) {
 }
 
 
-function getUserRecipesInDateRange(datesToDisplay) {
-  $.ajax({
-    type: "GET",
-    url: `/calendarRecipes/${currentUserId}/${datesToDisplay[0].format("YYYY-MM-DD")}/${datesToDisplay[datesToDisplay.length - 1].format("YYYY-MM-DD")}`,
-    success: function (response) {
-      displayRecipes(response);
-      return response;
-    }
-  });
-}
+// function getUserRecipesInDateRange(datesToDisplay) {
+//   $.ajax({
+//     type: "GET",
+//     url: `/calendarRecipes/${currentUserId}/${datesToDisplay[0].format("YYYY-MM-DD")}/${datesToDisplay[datesToDisplay.length - 1].format("YYYY-MM-DD")}`,
+//     success: function (response) {
+//       displayRecipes(response);
+//       return response;
+//     }
+//   });
+// }
 
-function displayRecipes(day, userRecipes) {
-  //display date in calendar
-  for (var i = 0; i < userRecipes.length; i++) {
-    //create card for each recipe and display in day column
+// function displayRecipes(day, userRecipes) {
+//   //display date in calendar
+//   for (var i = 0; i < userRecipes.length; i++) {
+//     //create card for each recipe and display in day column
 
-  }
+//   }
 
-}
+// }
 
 function getDatesToDisplay() {
   var dates = [];
