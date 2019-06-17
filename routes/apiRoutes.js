@@ -1,7 +1,6 @@
 var db = require("../models");
 
 module.exports = function(app) {
-
   app.get("/dates", function(req, res) {
     db.CalendarRecipe.findAll({
       where: {
@@ -15,16 +14,20 @@ module.exports = function(app) {
   });
   // Create a new example
   app.post("/api/newCalendarRecipe", function(req, res) {
-    console.log(req.body);
-    // db.User.findByPk(req.body.userId).then(function(result){
-          // });
-    // db.Recipe.
-
-    // db.User.create(
-
-    // ).then(function(dbExample) {
-    //   res.json(dbExample);
-    // });
+    
+    var recipeReceived = JSON.parse(req.body.recipe);
+    console.log("Recipe Recieved:" + JSON.stringify(recipeReceived));
+    db.Recipe.findOrCreate({
+      where: { apiId: recipeReceived.apiId },
+      defaults: recipeReceived
+    }).then(function([recipe, created]) {
+      db.CalendarRecipe.create({
+        mealtime: req.body.mealtime,
+        date: req.body.date,
+        userId: req.body.userId,
+        recipeId: recipe.id
+      });
+    });
   });
 
   app.post("/newuser", function(req, res) {

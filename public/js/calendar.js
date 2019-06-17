@@ -42,7 +42,7 @@ function displayMealtime(mealtime, day){
           var recipe = ev.originalEvent.dataTransfer.getData("recipe");
           var elementId = ev.originalEvent.dataTransfer.getData("elementId");
           ev.target.appendChild(document.getElementById(elementId));
-          saveRecipe(recipe, mealtime, day);
+          saveRecipe(recipe, mealtime, date);
         }).on("dragover", function(ev){
           ev.preventDefault();
         }));
@@ -60,12 +60,12 @@ function displayMealtime(mealtime, day){
   });
 }
 
-function saveRecipe(recipe, mealtime, day){
+function saveRecipe(recipe, mealtime, date){
   //ajax post to create recipe
   $.ajax({
     type: "POST",
     url: "/api/newCalendarRecipe",
-    data: {userId: currentUserId, recipe: recipe, mealtime: mealtime, day:day},
+    data: {userId: currentUserId, recipe: recipe, mealtime: mealtime, date:date},
     success: function(){
       console.log("recipe saved to calendar");
     }
@@ -84,25 +84,25 @@ function getUserRecipes(day) {
 }
 
 
-function getUserRecipesInDateRange(datesToDisplay) {
-  $.ajax({
-    type: "GET",
-    url: `/calendarRecipes/${currentUserId}/${datesToDisplay[0].format("YYYY-MM-DD")}/${datesToDisplay[datesToDisplay.length - 1].format("YYYY-MM-DD")}`,
-    success: function (response) {
-      displayRecipes(response);
-      return response;
-    }
-  });
-}
+// function getUserRecipesInDateRange(datesToDisplay) {
+//   $.ajax({
+//     type: "GET",
+//     url: `/calendarRecipes/${currentUserId}/${datesToDisplay[0].format("YYYY-MM-DD")}/${datesToDisplay[datesToDisplay.length - 1].format("YYYY-MM-DD")}`,
+//     success: function (response) {
+//       displayRecipes(response);
+//       return response;
+//     }
+//   });
+// }
 
-function displayRecipes(day, userRecipes) {
-  //display date in calendar
-  for (var i = 0; i < userRecipes.length; i++) {
-    //create card for each recipe and display in day column
+// function displayRecipes(day, userRecipes) {
+//   //display date in calendar
+//   for (var i = 0; i < userRecipes.length; i++) {
+//     //create card for each recipe and display in day column
 
-  }
+//   }
 
-}
+// }
 
 function getDatesToDisplay() {
   var dates = [];
