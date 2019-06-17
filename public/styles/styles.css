@@ -3,6 +3,7 @@ body {
 }
 
 /* Top Banner */
+
 #banner {
   position: relative;
   border-bottom: 6px solid lightgrey;
@@ -31,32 +32,49 @@ h5 {
 }
 
 /* Search bar */
+
 /* label color */
+
 .input-field label {
   color: darkslategray;
 }
+
 /* label focus color */
-.input-field input[type=text]:focus + label {
+
+.input-field input[type=text]:focus+label {
   color: darkslategray;
 }
+
 /* label underline focus color */
+
 .input-field input[type=text]:focus {
   border-bottom: 1px solid darkslategray;
   box-shadow: 0 1px 0 0 darkslategray;
 }
+
 /* valid color */
+
 .input-field input[type=text].valid {
   border-bottom: 1px solid darkslategray;
   box-shadow: 0 1px 0 0 darkslategray;
 }
+
 /* invalid color */
+
 .input-field input[type=text].invalid {
   border-bottom: 1px solid darkslategray;
   box-shadow: 0 1px 0 0 darkslategray;
 }
+
 /* icon prefix focus color */
+
 .input-field .prefix.active {
   color: darkslategray;
+}
+
+.row .col .calendarCel{ 
+  min-width: 100px;
+  min-height: 100px !important;
 }
 
 #search {
@@ -70,18 +88,20 @@ h5 {
   color: darkslategray;
   font-size: 16px;
 }
+
 /* 
 #search-button {
   float: right !important;
   position: relative;
   bottom: 25px;
 } */
+
 #search-button {
-  margin-top:10%;
+  margin-top: 10%;
 }
 
-
 /*Recipe cards*/
+
 /* .activator {
   max-height: 150px !important;
   max-height: 100px !important;
@@ -107,14 +127,15 @@ h5 {
 }
 
 /* 3 Day Calendar */
+
 #calendar {
   margin-top: 30px;
-} 
+}
 
 .day {
   font-weight: bold;
 }
 
-.ingredients-buttons{
+.ingredients-buttons {
   margin-right: 1%;
 }

@@ -35,13 +35,14 @@ function displayMealtime(mealtime, day){
       var row = "#"+mealtime.toLowerCase();
       if(response.length === 0){
         $(row).append($('<div>', {
-          class: "col s4", 
+          class: "col s4 calendarCel", 
           text: ""
         }).on("drop", function(ev){
           ev.preventDefault();
           var recipe = ev.originalEvent.dataTransfer.getData("recipe");
           var elementId = ev.originalEvent.dataTransfer.getData("elementId");
           ev.target.appendChild(document.getElementById(elementId));
+          saveRecipe(recipe, mealtime, day);
         }).on("dragover", function(ev){
           ev.preventDefault();
         }));
@@ -55,6 +56,18 @@ function displayMealtime(mealtime, day){
         
         $(row).append(recipeCell);
       }
+    }
+  });
+}
+
+function saveRecipe(recipe, mealtime, day){
+  //ajax post to create recipe
+  $.ajax({
+    type: "POST",
+    url: "/api/newCalendarRecipe",
+    data: {userId: currentUserId, recipe: recipe, mealtime: mealtime, day:day},
+    success: function(){
+      console.log("recipe saved to calendar");
     }
   });
 }

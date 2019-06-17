@@ -69,8 +69,14 @@ function search() {
       console.log("Recipes loaded: " + response);
       if (response.length > 0) {
         response.forEach(recipe => {
-          //call card creator here
-          //console.log(recipe);
+          //call the api to get ingredients list
+          // $.ajax({
+          //   type:"get",
+          //   url: "/recipe/"+recipe.apiId,
+          //   success: function(resIngredients){
+          //     var arrIngredients
+          //   }
+          // })
           var card = createCard(recipe);
           $('#recipes').append(card);
         });

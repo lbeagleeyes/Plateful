@@ -16,9 +16,15 @@ module.exports = function(app) {
   // Create a new example
   app.post("/api/newCalendarRecipe", function(req, res) {
     console.log(req.body);
-    db.CalendarRecipe.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
-    });
+    // db.User.findByPk(req.body.userId).then(function(result){
+          // });
+    // db.Recipe.
+
+    // db.User.create(
+
+    // ).then(function(dbExample) {
+    //   res.json(dbExample);
+    // });
   });
 
   app.post("/newuser", function(req, res) {
