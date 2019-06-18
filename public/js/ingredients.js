@@ -66,6 +66,7 @@ function search() {
     type: "GET",
     url: "/recipes/" + ingredientsList,
     success: function (response) {
+      
       console.log("Recipes loaded: " + response);
       if (response.length > 0) {
         response.forEach(recipe => {
