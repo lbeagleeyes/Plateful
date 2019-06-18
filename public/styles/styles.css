@@ -86,8 +86,10 @@ h5 {
 
 .row .col .calendarCel{ 
   min-width: 100px;
-  min-height: 100px !important;
+  min-height: 150px !important;
 }
+
+
 
 #search {
   position: relative;
