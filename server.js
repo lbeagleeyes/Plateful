@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var syncOptions = { force: true };
+var syncOptions = { force: false };
 
 // For Passport
 app.use(
