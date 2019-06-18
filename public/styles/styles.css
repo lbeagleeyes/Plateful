@@ -9,11 +9,23 @@ body {
   border-bottom: 6px solid lightgrey;
 }
 
+#logoutButton {
+  float: right;
+  position: relative; 
+  bottom: 40px;
+  right: 40px;
+}
+
 .icon {
   width: 90px;
   position: relative;
   top: 25px;
 }
+
+/* Prevents link from showing up as blue for Plateful header  */
+a { 
+  color: inherit; 
+} 
 
 h1 {
   font-family: 'Quicksand', sans-serif;
@@ -82,7 +94,7 @@ h5 {
 #search {
   position: relative;
   left: 12.5%;
-  bottom: 20px;
+  bottom: 30px;
   width: 75%;
 }
 
@@ -99,7 +111,7 @@ h5 {
 } */
 
 #search-button {
-  margin-top: 10%;
+  margin-top:8%;
 }
 
 /*Recipe cards*/
@@ -109,13 +121,16 @@ h5 {
   max-height: 100px !important;
 } */
 
+#headers {
+  padding: 20px 70px 20px 70px;
+}
+
 .activator {
   height: 100% !important;
 }
 
 #recipes {
-  margin-top: 30px;
-  margin-left: 20px;
+  padding: 20px 70px 20px 70px;
 }
 
 .card-image {
@@ -131,8 +146,8 @@ h5 {
 /* 3 Day Calendar */
 
 #calendar {
-  margin-top: 30px;
-}
+  padding: 20px 70px 20px 70px;
+} 
 
 .day {
   font-weight: bold;

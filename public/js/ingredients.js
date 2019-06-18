@@ -66,10 +66,22 @@ function search() {
     type: "GET",
     url: "/recipes/" + ingredientsList,
     success: function (response) {
+      
       console.log("Recipes loaded: " + response);
       if (response.length > 0) {
         response.forEach(recipe => {
-          var card = createCard(recipe);
+          //call card creator here
+    
+          // ajax call to get data for ingredients
+          // $.ajax({
+          //   type: "get",
+          //   url: "/recipe/" + recipe.apiId,
+          //   success: function (resIngredients) {
+          //     ingredientsArray = resIngredients;
+          //   }
+          // })
+
+          var card = createCard(recipe); // removed ingredientsArray variable for now
           $('#recipes').append(card);
         });
       } else {
@@ -174,8 +186,3 @@ function clearIngredientsList() {
   ingredientsList = [];
   $("#buttons-view").empty();
 }
-
-// Calendar modal event listener
-$('.modal-trigger').click(function () {
-  $('#modal1').modal();
-});

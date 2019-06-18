@@ -6,11 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-
-  <!-- fullCalendar JS -->
-  {{!-- <link href='fullcalendar/core/main.css' rel='stylesheet' href="/public/js/calendar.js"/>
-  <link href='fullcalendar/daygrid/main.css' rel='stylesheet'href="/public/js/calendar.js" /> --}}
-
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
@@ -31,8 +26,9 @@
   <!-- Header banner with logo -->
   <div class="row cyan darken-2" style="margin: 0px; text-align: center;">
     <div class="col s12" id="banner">
-      <h1><img src="/images/icon.png" alt="Plate with fork and knife icon" class="icon">Plateful</h1>
+      <h1><img src="/images/icon.png" alt="Plate with fork and knife icon" class="icon"><a href="/">Plateful</a></h1>
       <h5>What's in your fridge?</h5>
+      <a class="waves-effect light grey btn" id="logoutButton" href="/logout">Logout</a> <!-- Logout button -->
     </div>
   </div>
   <br>
@@ -55,10 +51,6 @@
 
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
-  <!-- fullCalendar JS script -->
-  {{!-- <script src='fullcalendar/core/main.js'></script>
-  <script src='fullcalendar/daygrid/main.js'></script> --}}
 
 
 </body>
