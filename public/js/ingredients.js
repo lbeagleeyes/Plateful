@@ -66,22 +66,11 @@ function search() {
     type: "GET",
     url: "/recipes/" + ingredientsList,
     success: function (response) {
-      
+
       console.log("Recipes loaded: " + response);
       if (response.length > 0) {
         response.forEach(recipe => {
-          //call card creator here
-    
-          // ajax call to get data for ingredients
-          // $.ajax({
-          //   type: "get",
-          //   url: "/recipe/" + recipe.apiId,
-          //   success: function (resIngredients) {
-          //     ingredientsArray = resIngredients;
-          //   }
-          // })
-
-          var card = createCard(recipe); // removed ingredientsArray variable for now
+          var card = createCard(recipe);
           $('#recipes').append(card);
         });
       } else {
@@ -125,9 +114,34 @@ function createCard(recipe) {
     text: recipe.title,
   });
 
+  var reveal = $('<div>').attr("class", 'card-reveal');
+  var revealTitle = new $('<span>', {
+    class: "card-title grey-text text-darken-4",
+    text: recipe.title
+  });
+
   var moreIcon = new $('<i>', {
     class: 'material-icons right more',
-    text: 'more_vert'
+    text: 'more_vert',
+    click: function () {
+      // ajax call to get data for ingredients
+      $.ajax({
+        type: "get",
+        url: "/recipe/" + recipe.apiId,
+        success: function (resIngredients) {
+          var ingredientsUl = $('<ul>', {
+            class: "collection"
+          });
+          resIngredients.ingredients.forEach(ingredient => {
+            ingredientsUl.append($('<li>', {
+              class: "collection-item",
+              text: ingredient
+            }));
+          });
+          reveal.append(ingredientsUl);
+        }
+      });
+    }
   });
 
 
@@ -146,11 +160,7 @@ function createCard(recipe) {
   cardContent.append(link);
   card.append(cardContent);
 
-  var reveal = $('<div>').attr("class", 'card-reveal');
-  var revealTitle = new $('<span>', {
-    class: "card-title grey-text text-darken-4",
-    text: recipe.title
-  });
+
 
   var closeIcon = new $('<i>', {
     class: "material-icons right",
@@ -160,24 +170,6 @@ function createCard(recipe) {
   revealTitle.append(closeIcon);
   reveal.append(revealTitle);
   card.append(reveal);
-
-  // ajax call to get data for ingredients
-  $.ajax({
-    type: "get",
-    url: "/recipe/" + recipe.apiId,
-    success: function (resIngredients) {
-      var ingredientsUl = $('<ul>', {
-        class:"collection"
-      });
-      resIngredients.ingredients.forEach(ingredient => {
-        ingredientsUl.append($('<li>', {
-          class:"collection-item",
-          text:ingredient
-        }));
-      });
-      reveal.append(ingredientsUl);
-    }
-  });
 
   return card;
 }
