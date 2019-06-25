@@ -4,25 +4,22 @@ Plateful is a recipe app that lets you search for multiple ingredients in your f
 
 ## To use
 
-* Create an account to get started (using Passport.js)
+* Go to Heroku site: [Plateful](https://ancient-harbor-32208.herokuapp.com/signin)
+* Create an account to get started (using Passport.js) or use: guest@mail.com - password
 * Use the search bar to add your ingredients 
 * Hit search when you're ready
-* View recipes and add to your calendar if you want to try them out!
+* View recipes and drag and drop to your calendar if you want to try them out!
 
-## Languages used:
+## Technologies used:
 
-* HTML
-* CSS
+* HTML/CSS(Materialize)
 * JavaScript
 * jQuery
-
-## Additional technologies used:
-* jQuery
-* Materialize CSS
-* Google Fonts
 * Express
 * Handlebars 
 * Passport.js
+* Sequelize
+* MySql
 
 ## API
 * Food2Fork 
@@ -34,5 +31,8 @@ Plateful is a recipe app that lets you search for multiple ingredients in your f
 * Sarah Beecroft
 * Kevin Fukuhara
 
-## Heroku site
-[Plateful](add link here)
+## To do:
+
+* Add capability to export recipes to Google Calendar
+* Add capability to add own recipes 
+* Add tab to search within personal recipes
