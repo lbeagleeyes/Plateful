@@ -94,7 +94,7 @@ h5 {
 #search {
   position: relative;
   left: 12.5%;
-  bottom: 30px;
+  /* bottom: 30px; */
   width: 75%;
 }
 
@@ -122,7 +122,7 @@ h5 {
 } */
 
 #headers {
-  padding: 20px 70px 20px 70px;
+  padding: 0px 0px 0px 70px;
 }
 
 .activator {
@@ -130,7 +130,7 @@ h5 {
 }
 
 #recipes {
-  padding: 20px 70px 20px 70px;
+  padding: 0px 0px 0px 20px;
 }
 
 .card-image {
@@ -146,7 +146,7 @@ h5 {
 /* 3 Day Calendar */
 
 #calendar {
-  padding: 20px 70px 20px 70px;
+  padding: 0px 20px 0px 40px;
 } 
 
 .day {
